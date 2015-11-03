@@ -13,7 +13,7 @@ angular.module('openWeatherApp.services', ['ngResource'])
   //
   // Define a standard list of "example locations"
   //
-  .value('exampleLocations',['Hamburg','San Francisco','Berlin','Athens','Tokyo','New York','Moscow','Clonakilty'])
+  .value('exampleLocations',['Portland','Sunnyvale','San Diego','Novato','Chicago','Austin','London'])
   //
   // Storm "Xaver" special locations
   //
@@ -33,17 +33,18 @@ angular.module('openWeatherApp.services', ['ngResource'])
   //
   .factory('openWeatherMap', function($resource) {
 
-    // API key is currently unused (work either with or without key)
-    var apiKey = '279b4be6d54c8bf6ea9b12275a567156';
+    // App will work with or without key)
+    //var apiKey = '171929526229998c53414493da6d67a8';
     var apiBaseUrl = 'http://api.openweathermap.org/data/2.5/';
 
     return $resource(apiBaseUrl + ':path/:subPath?q=:location',
       {
-//        APPID: apiKey,
+        APPID: apiKey,
         mode: 'json',
         callback: 'JSON_CALLBACK',
-        units: 'metric',
-        lang: 'en'
+        lang: 'en',
+        // testing to see what happens units: 'imperial'
+        units: 'imperial'
       },
       {
         queryWeather: {
@@ -71,7 +72,7 @@ angular.module('openWeatherApp.services', ['ngResource'])
           params: {
             path: 'forecast',
             subPath: 'daily',
-            cnt: 7
+            //cnt: 7
           },
           isArray: false,
           headers: {

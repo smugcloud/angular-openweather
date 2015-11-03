@@ -20,6 +20,7 @@ angular.module('openWeatherApp.controllers', [])
     // On initialization load data for first example entry
     $scope.forecast = openWeatherMap.queryForecastDaily({
       location: exampleLocations[ 0 ]
+
     });
 
     // Get forecast data for location as given in $scope.location

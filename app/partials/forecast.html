@@ -24,7 +24,7 @@
                 <div class="">
                     <h3>
                         {{forecast.city.name | placeholder:'?'}}, {{forecast.city.country | isoCountry}}
-                        <small>Lon: {{forecast.city.coord.lon | number:2}} Lat: {{forecast.city.coord.lat | number:2}} Population: {{forecast.city.population | number:0}}</small>
+                        <small>Lon: {{forecast.city.coord.lon | number:2}} Lat: {{forecast.city.coord.lat | number:2}} </small>
                     </h3>
                 </div>
             </div>
@@ -46,4 +46,8 @@
             </div>
         </div>
     </div>
+    <div ng-sparkline ng-city="Portland" width='400'>
+<h3>A custom view of the weather in Portland</h3>
+</div>
+</div>
 </div>
