@@ -71,7 +71,7 @@ var app = angular.module('openWeatherApp.directives', [])
 }])
 //D3 stuff
 app.directive('ngSparkline', function() {
-  var url = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=171929526229998c53414493da6d67a8&mode=json&units=imperial&cnt=14&callback=JSON_CALLBACK&q=";
+  var url = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=" + apiKey + "&mode=json&units=imperial&cnt=14&callback=JSON_CALLBACK&q=";
   return {
     restrict: 'A',
     require: '^ngCity',
@@ -118,9 +118,10 @@ app.directive('ngSparkline', function() {
 
 var chartGraph = function(element, data, opts, w_date) {
 //Start of comments from old d3 code
- var width = 600, //opts.width || 200,
-      height = 300, //opts.height || 80,
-      padding = opts.padding || 30;
+ var margin = {top: 20, right: 20, bottom: 30, left: 50},
+      width = 1110 - margin.left - margin.right, //opts.width || 200,
+      height = 500; //opts.height || 80,
+      //padding = opts.padding || 30;
       //console.log(w_date.length);
 
   //convert the dates from epoch time to human readable
@@ -200,25 +201,25 @@ var chartGraph = function(element, data, opts, w_date) {
                     .attr('fill', 'none')
                     .attr('stroke-width', '1')
                     .attr('stroke','blue'); */
-                    var timeFormat = d3.time.format("%x")
+                    var timeFormat = d3.time.format("%b-%e")
                     var svg     = d3.select(element[0])
                                       .append('svg:svg')
-                                      .attr('width', width)
-                                      .attr('height', height)
+                                      .attr('width', width + margin.left + margin.right)
+                                      .attr('height', height+ margin.top + margin.bottom)
                                       .attr('class', 'sparkline')
                                       .append('g')
-                                        .attr('transform', 'translate('+padding+', '+padding+')');
+                                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
                       //svg.selectAll('*').remove();
                       //w_date.forEach(function (d) { d.w_date = new Date(d.w_date *1000);console.log(d.w_date);});
                       for(var i=0; i < w_date.length; i++) {
                         w_date[i] = new Date(w_date[i] * 1000);
-                        console.log(w_date[i]);
+                        //console.log(w_date[i]);
                       }
                       // find data range
                       var xMin = d3.min(w_date);
                       var xMax = d3.max(w_date);
-                      console.log("xMin is: " + xMin);
+                      //console.log("xMin is: " + xMin);
                       var maxY    = d3.max(data),
 
                           x       = d3.time.scale()
@@ -232,14 +233,14 @@ var chartGraph = function(element, data, opts, w_date) {
                                         .ticks(5),
                           xAxis = d3.svg.axis().scale(x)
                                         .orient('bottom')
-                                        .ticks(5)
+                                        //.ticks(5)
                                         .tickFormat(timeFormat);
 
-                        var margin = {top: 20, right: 20, bottom: 30, left: 50},
-                          innerwidth = width - margin.left - margin.right,
-                          innerheight = height - margin.top - margin.bottom,
-                          xlabel = "Days in the future",
-                          ylabel = "Y Axis Label" ;
+                        //var margin = {top: 20, right: 20, bottom: 30, left: 50},
+                          var innerwidth = width - margin.left - margin.right,
+                          innerheight = height - margin.top - margin.bottom;
+                          //xlabel = "Days in the future",
+                          //ylabel = "Y Axis Label" ;
 
                       svg.append('g')
                           .attr('class', 'axis')
@@ -248,11 +249,11 @@ var chartGraph = function(element, data, opts, w_date) {
                     //x axis
                       svg.append("g")
                           .attr("class", "x axis")
-                          .attr("transform", "translate(0," + innerheight + ")")
+                          .attr("transform", "translate(0," + height + ")")
                           .call(xAxis);
 
                       svg.append("text")
-                          .attr("x", width / 2 )
+                          .attr("x", width)
                           .attr("y",  height + margin.bottom)
 
 
