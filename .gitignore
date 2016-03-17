@@ -5,4 +5,3 @@ dist-src
 data
 .idea
 .DS_Store
-app/js/secrets.js

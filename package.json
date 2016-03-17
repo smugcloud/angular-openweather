@@ -6,6 +6,8 @@
     "name": "Nick Leli, forked from Matthias Lienau",
     "email": "nicholasleli@gmail.com"
   },
+  "license": "MIT",
+  "repository": "https://github.com/smugcloud/angular-openweather",
   "scripts": {
     "start": "node scripts/web-server.js"
   },

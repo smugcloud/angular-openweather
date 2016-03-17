@@ -6,7 +6,11 @@ var util = require('util'),
     url = require('url'),
     events = require('events');
 
-var DEFAULT_PORT = 8000;
+var DEFAULT_PORT = 9090;
+
+//Get the api-key from the startup script
+//var apikey = process.env.apikey;
+//console.log(apikey);
 
 function main(argv) {
   new HttpServer({

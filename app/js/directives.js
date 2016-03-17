@@ -71,6 +71,7 @@ var app = angular.module('openWeatherApp.directives', [])
 }])
 //D3 stuff
 app.directive('ngSparkline', function() {
+  
   var url = "http://api.openweathermap.org/data/2.5/forecast/daily?APPID=" + apiKey + "&mode=json&units=imperial&cnt=14&callback=JSON_CALLBACK&q=";
   return {
     restrict: 'A',
