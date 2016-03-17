@@ -1,7 +1,7 @@
 
 # angular-openweather-app — a weather forecast app written in AngularJS
 
-<img src="app/img/app_screenshot_v_0-1-4_1.png" alt="OpenWeather App"/>
+<img src="app/img/app-with-d3.png" alt="OpenWeather App"/>
 
 "OpenWeather App" is a small AngularJS project that makes use of the [OpenWeatherMap](http://openweathermap.org/)
 service for fetching and displaying weather data and forecasts based on a given location (city).
@@ -35,7 +35,7 @@ angular-openweather-app uses:
 via git and npm:
 
 ```
-$ git clone git@github.com:atufkas/angular-openweather-app.git [my-app-name]
+$ git clone git@github.com:smugcloud/angular-openweather.git [my-app-name]
 $ cd [my-app-name]
 $ npm install
 ```
@@ -46,8 +46,8 @@ $ npm install
 
 You can pick one of these options:
 
-* serve this repository with a webserver of-your-choice
-* install node.js and run `scripts/web-server.js`
+* Set the API Key, install node.js and run `node scripts/web-server.js`
+* Run the app as a Docker container passing in the API Key as an environment variable: `docker run -d -p 9090:9090 -e API_KEY=<APIKEY> smugcloud/openweather:v1`
 
 Then navigate your browser to `http://localhost:<port>/app/index.html` to see the app running in
 your browser.
