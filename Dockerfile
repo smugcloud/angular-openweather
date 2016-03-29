@@ -1,8 +1,8 @@
 FROM node:0.12
 
-COPY / /var/weather
+COPY . /var/weather
 
-RUN cd /var/weather && npm install
+RUN cd /var/weather && npm install -g http-server && npm install
 
 EXPOSE 9090
 

@@ -7,10 +7,10 @@
     "email": "nicholasleli@gmail.com"
   },
   "license": "MIT",
-  "repository": "https://github.com/smugcloud/angular-openweather",
   "scripts": {
-    "start": "node scripts/web-server.js"
+    "preinstall": "npm install -g http-server"
   },
+  "repository": "https://github.com/smugcloud/angular-openweather",
   "devDependencies": {
       "phantomjs" : "*",
       "karma": "^0.12.16",

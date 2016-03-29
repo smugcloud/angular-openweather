@@ -12,4 +12,5 @@ else
 fi
 
 #Now start the Server
-node /var/weather/scripts/web-server.js
+cd /var/weather
+http-server app -p 9090
