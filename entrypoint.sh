@@ -3,8 +3,8 @@
 
 APPDIR='/var/weather'
 
-if [[ $API_KEY ]]; then
-	sed -i -e "s/^.*var apiKey =.*$/var apiKey = '$API_KEY'/" ${APPDIR}/app/js/secrets.js
+if [[ $api_key ]]; then
+	sed -i -e "s/^.*var apiKey =.*$/var apiKey = '$api_key'/" ${APPDIR}/app/js/secrets.js
   echo "Done writing key"
 else
 	echo "You must set API_KEY environment variable to retrieve OpenWeatherApp data."
